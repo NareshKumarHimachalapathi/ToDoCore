@@ -1,23 +1,19 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace ToDoCoreApi.Models
 {
     public class ToDoItem
     {
-        private string v;
-        private object message;
-
-        public ToDoItem()
+        public ToDoItem(string text)
         {
+            this.Text = text;
         }
 
-        public ToDoItem(string v, object message)
-        {
-            this.v = v;
-            this.message = message;
-        }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
-        public Guid Id { get; set; }
+        [JsonProperty(PropertyName = "text")]
         public string Text { get; set; }
     }
 }
