@@ -41,7 +41,7 @@ public class ToDoItemRepository : IRepository<ToDoItem>
 
     public async Task<ToDoItem> GetAsync(string id)
     {
-        FeedIterator<ToDoItem> results = container.GetItemQueryIterator<ToDoItem>("select * from Items i where i.id = '" + id + "'");
+        FeedIterator<ToDoItem> results = container.GetItemQueryIterator<ToDoItem>("select top 1 * from Items i where i.id = '" + id + "'");
 
         FeedResponse<ToDoItem> item = await results.ReadNextAsync();
 
